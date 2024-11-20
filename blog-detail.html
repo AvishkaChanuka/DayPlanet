@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Detail - Day Planet</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="blog-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container py-5">
+        <a href="blogs.html" class="btn btn-success mb-4">
+            <i class="bi bi-arrow-left"></i> Back to Blogs
+        </a>
+        
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-body">
+                        <span class="category-badge">SDG 13: Climate Action</span>
+                        <h1 class="blog-title mb-3">Global Climate Change: Actions for a Sustainable Future</h1>
+                        <div class="meta-info mb-4">
+                            <i class="bi bi-person"></i> James Wilson
+                            <span class="mx-2">•</span>
+                            <i class="bi bi-calendar"></i> Mar 20, 2024
+                            <span class="mx-2">•</span>
+                            <i class="bi bi-eye"></i> 1.2k views
+                            <span class="mx-2">•</span>
+                            <i class="bi bi-clock"></i> 8 min read
+                        </div>
+
+                        <img src="/api/placeholder/800/400" alt="Climate Change" class="img-fluid rounded mb-4">
+
+                        <div class="blog-content">
+                            <p class="lead">Climate change is one of the most pressing challenges of our time, affecting communities worldwide and threatening the very fabric of our ecosystems.</p>
+
+                            <h2 class="mt-4 mb-3">Understanding the Challenge</h2>
+                            <p>The Earth's climate is changing at an unprecedented rate, largely due to human activities. The burning of fossil fuels, deforestation, and industrial processes have led to increased greenhouse gas emissions, resulting in global warming and its associated impacts.</p>
+
+                            <h2 class="mt-4 mb-3">Key Impacts of Climate Change</h2>
+                            <ul class="mb-4">
+                                <li>Rising global temperatures</li>
+                                <li>Melting polar ice caps</li>
+                                <li>Sea level rise</li>
+                                <li>Extreme weather events</li>
+                                <li>Loss of biodiversity</li>
+                            </ul>
+
+                            <blockquote class="border-start border-success border-4 ps-4 my-4">
+                                <p class="fs-5">"Climate change is no longer some far-off problem; it is happening here, it is happening now."</p>
+                                <footer class="blockquote-footer">Barack Obama</footer>
+                            </blockquote>
+
+                            <h2 class="mt-4 mb-3">Taking Action</h2>
+                            <p>There are numerous ways individuals and communities can contribute to fighting climate change:</p>
+
+                            <div class="row mt-4">
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Individual Actions</h5>
+                                            <ul class="list-unstyled">
+                                                <li><i class="bi bi-check-circle text-success"></i> Reduce energy consumption</li>
+                                                <li><i class="bi bi-check-circle text-success"></i> Use public transportation</li>
+                                                <li><i class="bi bi-check-circle text-success"></i> Minimize waste</li>
+                                                <li><i class="bi bi-check-circle text-success"></i> Support renewable energy</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Community Actions</h5>
+                                            <ul class="list-unstyled">
+                                                <li><i class="bi bi-check-circle text-success"></i> Support local initiatives</li>
+                                                <li><i class="bi bi-check-circle text-success"></i> Participate in clean-ups</li>
+                                                <li><i class="bi bi-check-circle text-success"></i> Advocate for green policies</li>
+                                                <li><i class="bi bi-check-circle text-success"></i> Educational programs</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Author Box -->
+                            <div class="card mt-5">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center">
+                                        <img src="/api/placeholder/80/80" class="rounded-circle me-3" alt="Author">
+                                        <div>
+                                            <h5 class="mb-1">James Wilson</h5>
+                                            <p class="text-muted mb-2">Environmental Specialist</p>
+                                            <p class="mb-0">James has been writing about environmental issues for over a decade, focusing on climate change and sustainable development.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Share Buttons -->
+                            <div class="mt-4">
+                                <h5>Share this article</h5>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-primary"><i class="bi bi-facebook"></i></button>
+                                    <button class="btn btn-info text-white"><i class="bi bi-twitter"></i></button>
+                                    <button class="btn btn-success"><i class="bi bi-whatsapp"></i></button>
+                                    <button class="btn btn-danger"><i class="bi bi-envelope"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comments Section -->
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h4 class="mb-4">Comments (3)</h4>
+                        
+                        <!-- Comment Form -->
+                        <form class="mb-4">
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="3" placeholder="Leave a comment..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success">Post Comment</button>
+                        </form>
+
+                        <!-- Comments List -->
+                        <div class="comments-list">
+                            <!-- Comment 1 -->
+                            <div class="d-flex mb-4">
+                                <img src="/api/placeholder/50/50" class="rounded-circle me-3" alt="User">
+                                <div>
+                                    <h5 class="mb-1">Sarah Parker</h5>
+                                    <p class="text-muted small">2 hours ago</p>
+                                    <p>Great article! The suggestions for individual actions are particularly helpful.</p>
+                                </div>
+                            </div>
+
+                            <!-- Comment 2 -->
+                            <div class="d-flex">
+                                <img src="/api/placeholder/50/50" class="rounded-circle me-3" alt="User">
+                                <div>
+                                    <h5 class="mb-1">Mike Johnson</h5>
+                                    <p class="text-muted small">5 hours ago</p>
+                                    <p>This is exactly what we need - practical solutions that everyone can implement.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Related Posts -->
+                <div class="sidebar-section">
+                    <h4 class="sidebar-title">Related Posts</h4>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h6 class="blog-title">Renewable Energy: The Future is Now</h6>
+                            <p class="small text-muted mb-2">Mar 18, 2024</p>
+                            <a href="#" class="btn btn-sm btn-success">Read More</a>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h6 class="blog-title">Sustainable Cities: Building for Tomorrow</h6>
+                            <p class="small text-muted mb-2">Mar 15, 2024</p>
+                            <a href="#" class="btn btn-sm btn-success">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Newsletter Signup -->
+                <div class="newsletter-form">
+                    <h4 class="sidebar-title">Stay Updated</h4>
+                    <p>Get the latest sustainability news and tips.</p>
+                    <form>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Your email address">
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
