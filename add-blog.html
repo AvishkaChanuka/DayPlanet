@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Blog - Day Planet</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin-top: 50px;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .btn-success {
+            background-color: var(--dark-green, #198754);
+            border-color: var(--dark-green, #198754);
+        }
+        .btn-success:hover {
+            background-color: var(--hover-green, #157347);
+            border-color: var(--hover-green, #157347);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4 text-center text-success">Write a Blog</h1>
+        <form id="addBlogForm">
+            <div class="mb-3">
+                <label for="blogTitle" class="form-label">Blog Title</label>
+                <input type="text" class="form-control" id="blogTitle" placeholder="Enter the blog title" required>
+            </div>
+            <div class="mb-3">
+                <label for="blogCategory" class="form-label">Category</label>
+                <select class="form-select" id="blogCategory" required>
+                    <option value="">Select a category</option>
+                    <option value="Climate Action">SDG 13: Climate Action</option>
+                    <option value="No Poverty">SDG 1: No Poverty</option>
+                    <option value="Clean Water">SDG 6: Clean Water</option>
+                    <option value="Quality Education">SDG 4: Quality Education</option>
+                    <option value="Gender Equality">SDG 5: Gender Equality</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="blogContent" class="form-label">Content</label>
+                <textarea class="form-control" id="blogContent" rows="10" placeholder="Write your blog here..." required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="blogAuthor" class="form-label">Your Name</label>
+                <input type="text" class="form-control" id="blogAuthor" placeholder="Enter your name" required>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Submit Blog</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('addBlogForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const title = document.getElementById('blogTitle').value;
+            const category = document.getElementById('blogCategory').value;
+            const content = document.getElementById('blogContent').value;
+            const author = document.getElementById('blogAuthor').value;
+
+            // Example logic: You can replace this with an API call to store the blog in a database.
+            alert(`Blog Submitted:\nTitle: ${title}\nCategory: ${category}\nAuthor: ${author}`);
+            // Redirect to the blogs page
+            window.location.href = 'index.html'; // Replace 'index.html' with your main blogs page
+        });
+    </script>
+</body>
+</html>

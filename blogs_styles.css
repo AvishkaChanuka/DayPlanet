@@ -100,6 +100,20 @@ body {
     color: white;
 }
 
+.add-blog-btn .btn {
+    font-size: 1rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 1px;
+}
+
+.add-blog-btn .btn:hover {
+    background-color: var(--hover-green);
+    border-color: var(--hover-green);
+}
+
+
 .pagination .page-link {
     color: var(--dark-green);
 }
