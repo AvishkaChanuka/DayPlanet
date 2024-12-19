@@ -1,11 +1,11 @@
 :root {
     --light-green: #f0f9f0;
-    --dark-green: #198754;
+    
     --hover-green: #157347;
 }
 
 body {
-    background-color: var(--light-green);
+    background-color: var(white);
 }
 
 .hero-section {
@@ -24,7 +24,7 @@ body {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: var(--dark-green);
+    background-color: var(black);
     color: white;
     padding: 5px 15px;
     border-radius: 20px;
@@ -44,12 +44,12 @@ body {
 }
 
 .blog-title {
-    color: var(--dark-green);
+    color: var(black);
     font-weight: 600;
 }
 
 .text-green {
-    color: var(--dark-green);
+    color: var(black);
 }
 
 .meta-info {
@@ -59,7 +59,7 @@ body {
 
 .category-badge {
     background-color: #e9f7e9;
-    color: var(--dark-green);
+    color: var(black);
     padding: 4px 12px;
     border-radius: 15px;
     font-size: 0.85rem;
@@ -76,7 +76,7 @@ body {
 }
 
 .sidebar-title {
-    color: var(--dark-green);
+    color: var(black);
     font-size: 1.2rem;
     margin-bottom: 15px;
     padding-bottom: 10px;
@@ -88,7 +88,7 @@ body {
     padding: 4px 12px;
     margin: 4px;
     background: #e9f7e9;
-    color: var(--dark-green);
+    color: var(black);
     border-radius: 15px;
     font-size: 0.85rem;
     text-decoration: none;
@@ -96,7 +96,7 @@ body {
 }
 
 .tag-cloud a:hover {
-    background: var(--dark-green);
+    background: var(black);
     color: white;
 }
 
@@ -115,7 +115,7 @@ body {
 
 
 .pagination .page-link {
-    color: var(--dark-green);
+    color: var(black);
 }
 
 .pagination .page-link:hover {
@@ -123,8 +123,8 @@ body {
 }
 
 .pagination .active .page-link {
-    background-color: var(--dark-green);
-    border-color: var(--dark-green);
+    background-color: var(black);
+    border-color: var(black);
 }
 
 .newsletter-form {
@@ -135,8 +135,8 @@ body {
 }
 
 .btn-success {
-    background-color: var(--dark-green);
-    border-color: var(--dark-green);
+    background-color: var(black);
+    border-color: var(black);
     transition: all 0.2s;
 }
 
