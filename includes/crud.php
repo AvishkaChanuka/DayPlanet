@@ -1,13 +1,18 @@
 <?php
+    include('includes/connection.php');
+    include('includes/alert.php');
+
     function Create($sql) {
         $conn = connectDatabase();
 
         if ($conn->query($sql) === TRUE) {
             $insertedId = $conn->insert_id; // Get the last inserted ID
             $conn->close();
-            return $insertedId;
+            return true;
+            //return $insertedId;
         } else {
-            error_log("Error: " . $sql . "\n" . $conn->error);
+            //error_log("Error: " . $sql . "\n" . $conn->error);
+            ShowError("Error: " . $sql . "\n" . $conn->error);
             $conn->close();
             return false;
         }
@@ -49,7 +54,7 @@
             $conn->close();
             return true;
         } else {
-            error_log("Error updating record: " . $conn->error);
+            ShowError("Error updating record: " . $conn->error);
             $conn->close();
             return false;
         }
@@ -62,7 +67,7 @@
             $conn->close();
             return true;
         } else {
-            error_log("Error deleting record: " . $conn->error);
+            ShowError("Error deleting record: " . $conn->error);
             $conn->close();
             return false;
         }

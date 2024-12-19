@@ -2,9 +2,9 @@
 // Database Connection
     function connectDatabase() {
         $host = 'localhost';
-        $user = 'your_username';
-        $password = 'your_password';
-        $dbname = 'your_database';
+        $user = 'root';
+        $password = '';
+        $dbname = 'dayplanet';
 
         $conn = new mysqli($host, $user, $password, $dbname);
 
