@@ -7,9 +7,23 @@
   li.nav-item:hover{
     border-bottom: 1px solid black;
   }
+
+  .navbar {
+      padding: 1rem 0;
+      background-color: white !important;
+      border-bottom: 1px solid #dee2e6;
+    }
 </style>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<?php
+  if(!isset($_COOKIE["UserID"])){
+
+    header('Location:login.php');
+
+  }
+?>
+
+<nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"><b>Day Planet</b></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,7 +33,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#">Home</a>
+          <a class="nav-link" aria-current="page" href="index.php">Home</a>
         </li>
 
         <li class="nav-item">
@@ -28,7 +42,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#">Suatainable Tips</a>
+          <a class="nav-link" href="tips.php">Suatainable Tips</a>
         </li>
 
         <li class="nav-item">
@@ -41,8 +55,7 @@
 
       </ul>
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-dark" type="submit">Search</button>
+        <label style="font-weight: bold;"><?php echo $_COOKIE["UserName"]?></label>
       </form>
     </div>
   </div>
