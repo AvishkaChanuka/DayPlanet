@@ -31,7 +31,8 @@
 <body>
     <div class="container">
         <h1 class="mb-4 text-center text-success">Write a Blog</h1>
-        <form id="addBlogForm">
+        
+        <form id="addBlogForm" enctype="multipart/form-data" >
             <div class="mb-3">
                 <label for="blogTitle" class="form-label">Blog Title</label>
                 <input type="text" class="form-control" id="blogTitle" placeholder="Enter the blog title" required>
@@ -40,39 +41,38 @@
                 <label for="blogCategory" class="form-label">Category</label>
                 <select class="form-select" id="blogCategory" required>
                     <option value="">Select a category</option>
-                    <option value="Climate Action">SDG 13: Climate Action</option>
-                    <option value="No Poverty">SDG 1: No Poverty</option>
-                    <option value="Clean Water">SDG 6: Clean Water</option>
-                    <option value="Quality Education">SDG 4: Quality Education</option>
-                    <option value="Gender Equality">SDG 5: Gender Equality</option>
+                    <option value="SDG 1">SDG 1: No Poverty</option>
+                    <option value="SDG 2">SDG 2: Zero Hunger</option>
+                    <option value="SDG 3">SDG 3: Good Health and Well-being</option>
+                    <option value="SDG 4">SDG 4: Quality Education</option>
+                    <option value="SDG 5">SDG 5: Gender Equality</option>
+                    <option value="SDG 6">SDG 6: Clean Water and Sanitation</option>
+                    <option value="SDG 7">SDG 7: Affordable and Clean Energy</option>
+                    <option value="SDG 8">SDG 8: Decent Work and Economic Growth</option>
+                    <option value="SDG 9">SDG 9: Industry, Innovation and Infrastructure</option>
+                    <option value="SDG 10">SDG 10: Reduced Inequality</option>
+                    <option value="SDG 11">SDG 11: Sustainable Cities and Communities</option>
+                    <option value="SDG 12">SDG 12: Responsible Consumption and Production</option>
+                    <option value="SDG 13">SDG 13: Climate Action</option>
+                    <option value="SDG 14">SDG 14: Life Below Water</option>
+                    <option value="SDG 15">SDG 15: Life on Land</option>
+                    <option value="SDG 16">SDG 16: Peace, Justice and Strong Institutions</option>
+                    <option value="SDG 17">SDG 17: Partnerships for the Goals</option>
                 </select>
+            </div>
+            <div class="mb-3">
+                <label for="blogContent" class="form-label">Introduction</label>
+                <textarea class="form-control" id="blogContent" rows="5" placeholder="Write your blog here..." required></textarea>
             </div>
             <div class="mb-3">
                 <label for="blogContent" class="form-label">Content</label>
                 <textarea class="form-control" id="blogContent" rows="10" placeholder="Write your blog here..." required></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="blogAuthor" class="form-label">Your Name</label>
-                <input type="text" class="form-control" id="blogAuthor" placeholder="Enter your name" required>
             </div>
             <button type="submit" class="btn btn-success w-100">Submit Blog</button>
         </form>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.getElementById('addBlogForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const title = document.getElementById('blogTitle').value;
-            const category = document.getElementById('blogCategory').value;
-            const content = document.getElementById('blogContent').value;
-            const author = document.getElementById('blogAuthor').value;
-
-            // Example logic: You can replace this with an API call to store the blog in a database.
-            alert(`Blog Submitted:\nTitle: ${title}\nCategory: ${category}\nAuthor: ${author}`);
-            // Redirect to the blogs page
-            window.location.href = 'index.html'; // Replace 'index.html' with your main blogs page
-        });
-    </script>
+    
 </body>
 </html>
