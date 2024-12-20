@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Profile | Day Planet</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="CSS/style.css">
     <?php include('includes/connection.php');?>
     <style>
       body {
@@ -198,11 +199,7 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-md-3 text-center">
-            <img src="assets/user.jpg" alt="Profile Avatar" class="profile-avatar mb-3">
-          </div>
-          <div class="col-md-9">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <div>
+           
               <?php
                 $query = "SELECT 
                               u.user_id,
@@ -232,7 +229,13 @@
                         $location = $row["location"];
                         $cover = $row["profile_pic"];
                         $sdg = $row["date_joined"];
-
+                        echo'
+                         <img src="'.$cover.'" alt="Profile Avatar" class="profile-avatar mb-3">
+          </div>
+          <div class="col-md-9">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div>
+                        ';
                         echo'<h2 class="mb-1">'.$name.'</h2>';
                         echo'<p class="mb-2"><i class="bi bi-geo-alt-fill"></i>'.$location.'</p>';
 
@@ -252,7 +255,11 @@
                 $conn->close();
               ?>
                 
-                
+        <div class="add-blog-btn mb-4 text-end">
+            <a href="add-post.php" class="btn btn-success">
+                <i class="bi bi-plus-circle"></i> Add Post
+             </a>            
+        </div>
                 
           </div>
         </div>
@@ -418,7 +425,8 @@
         </div>
       </div>
     </div>
-
+    
+    <?php include('includes/footer.php');?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
