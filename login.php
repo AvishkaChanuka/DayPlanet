@@ -30,7 +30,7 @@
                     <input type="password" class="form-control" id="exampleInputPassword1" name="UserPassword">
                 </div>
                 <div class="container" style='text-align: center; padding-top:10px;'>
-                    <button type="submit" class="btn btn-dark" name="SignUp" style="margin-right: 10px;">Sign In</button>
+                    <button type="submit" class="btn btn-dark" name="SignIn" style="margin-right: 10px;">Sign In</button>
                     <button type="reset" class="btn btn-outline-dark">Clear</button>
                 </div>
 
@@ -40,6 +40,44 @@
           </div>
         </div>
       </div>
+
+      <?php
+
+        include('includes/crud.php');
+
+        if(isset($_POST["SignIn"])){
+          
+          $userEmail = $_POST["UserEmail"];
+          $userPassword = $_POST["UserPassword"];
+
+          $query = "SELECT * FROM users WHERE email ='". $userEmail ."' and password = '". $userPassword."';";
+
+          function Login($sql) {
+            $conn = connectDatabase();
+            $result = $conn->query($sql);
+        
+            $data = [];
+            if ($result && $result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $data[] = $row;
+                    $msg = "Hi " . $row['full_name'] . " Let's do an impact together!!!";
+                    ShowAlert($msg);
+                }
+              
+              header('Location:index.php');
+              exit();
+            }
+            else{
+              ShowError("Something went wrong, please check your credentials & again!!!");
+            }
+        
+            $conn->close();
+          }
+
+          Login($query);
+        }
+      ?>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>

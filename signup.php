@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="CSS/auth.css">
 </head>
   <body>
- 
-  <?php include('includes/crud.php');?>
     <div class="card mb-3" style="max-width: 840px; top: 50%;left:50%;position: absolute;transform: translate(-50%,-50%);box-sizing: border-box;">
         <div class="row g-0">
           <div class="col-md-6">
@@ -89,6 +87,7 @@
       </div>
 
       <?php
+        include('includes/crud.php');
         
         if(isset($_POST["SignUp"])){
           $userName = $_POST["UserName"];
