@@ -1,0 +1,154 @@
+body {
+    background-color: #f8f9fa;
+  }
+
+  .hero-section {
+    background: linear-gradient(rgba(25, 135, 84, 0.9), rgba(25, 135, 84, 0.8));
+    padding: 6rem 0;
+    padding-top: 9rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+
+  .content-section {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .section-title {
+    color: #2d3748;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e9ecef;
+  }
+
+  .post-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 100%;
+  }
+
+  .post-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .card-img-top {
+    border-radius: 16px 16px 0 0;
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .card-body{
+    padding:1rem;
+  }
+
+  .badge {
+    background-color: #28a745;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .sdg-icon {
+    font-size: 2.5rem;
+    color: #198754;
+    margin-bottom: 1rem;
+  }
+
+  .progress {
+    height: 10px;
+    border-radius: 5px;
+    background-color: #e9ecef;
+  }
+
+  .progress-bar {
+    background-color: #198754;
+  }
+
+  .achievement-badge {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+  }
+
+  .achievement-badge:hover {
+    transform: translateY(-2px);
+  }
+
+  .badge-icon {
+    font-size: 2.5rem;
+    color: #198754;
+    margin-bottom: 0.75rem;
+  }
+
+  .action-button {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #4a5568;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+
+  .action-button:hover {
+    color: #2d3748;
+  }
+
+  .heart-button:hover {
+    color: #e53e3e;
+  }
+
+  .comment-button:hover {
+    color: #3182ce;
+  }
+
+  footer {
+    background-color: white;
+    padding: 3rem 0;
+    border-top: 1px solid #dee2e6;
+    margin-top: 4rem;
+  }
+
+  .footer-title {
+    color: #2d3748;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .social-links {
+    font-size: 1.25rem;
+  }
+
+  .social-links a {
+    color: #6c757d;
+    transition: color 0.2s ease;
+  }
+
+  .social-links a:hover {
+    color: #198754;
+  }

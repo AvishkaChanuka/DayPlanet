@@ -60,6 +60,16 @@
             if ($result && $result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     $data[] = $row;
+                    
+                    $cookie_name = "UserID";
+                    $cookie_value = $row['user_id'];
+                    setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+
+                    $cookie_name = "UserName";
+                    $cookie_value = $row['full_name'];
+                    setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+
+
                     $msg = "Hi " . $row['full_name'] . " Let's do an impact together!!!";
                     ShowAlert($msg);
                 }
