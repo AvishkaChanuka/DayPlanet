@@ -7,18 +7,21 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     <link href="blogs_styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
+    <?php include('includes/navbar.php');?>
     <!-- Hero Section -->
-    <div class="hero-section text-center">
+    <div class="hero-section text-center text-white">
         <div class="container">
-            <h1 class="display-4 mb-3">Sustainable Development Goals Blog</h1>
-            <p class="lead">Exploring ways to create a better world </p>
+        <h1 class="display-4 fw-bold mb-4"></h1>
+        <h1 class="display-4 fw-bold mb-4">Sustainable Development Goals Blog</h1>
+        <p class="lead mb-4">Exploring ways to create a better world.</p>
         </div>
     </div>
 
     <div class="container">
-        <!-- Search Bar -->
+        <!-- Search Bar 
         <form class="search-form">
             <div class="input-group">
                 <input type="search" class="form-control" placeholder="Search blog posts...">
@@ -26,12 +29,12 @@
                     <i class="bi bi-search"></i>
                 </button>
             </div>
-        </form>
+        </form>-->
 
         <div class="row">
             <!-- Main Content -->
             <div class="col-lg-8">
-                <!-- Featured Post -->
+                <!-- Featured Post 
                 <div class="card blog-card mb-4">
                     <div class="card-body">
                         <span class="featured-tag">Latest</span>
@@ -47,47 +50,71 @@
                         <p class="card-text">An in-depth look at how climate change is affecting our planet and what actions we can take to make a difference...</p>
                         <a href="blog-detail.html" class="btn btn-success">Read More</a>
                     </div>
-                </div>
+                </div>-->
 
                 <div class="row">
                     <!-- Regular Blog Posts -->
-                    <div class="col-md-6">
-                        <div class="card blog-card">
-                            <div class="card-body">
-                                <span class="category-badge">SDG 1: No Poverty</span>
-                                <h5 class="blog-title">Understanding SDG 1: No Poverty</h5>
-                                <div class="meta-info mb-2">
-                                    <i class="bi bi-person"></i> Sarah Johnson
-                                    <span class="mx-2">•</span>
-                                    <i class="bi bi-calendar"></i> Mar 15, 2024
-                                </div>
-                                <p class="card-text">Explore the first Sustainable Development Goal and learn how we can contribute to ending poverty...</p>
-                                <a href="blog-detail.html" class="btn btn-success">Read More</a>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="col-md-6">
-                        <div class="card blog-card">
-                            <div class="card-body">
-                                <span class="category-badge">SDG 6: Clean Water</span>
-                                <h5 class="blog-title">The Impact of Clean Water Initiatives</h5>
-                                <div class="meta-info mb-2">
-                                    <i class="bi bi-person"></i> Emma Williams
-                                    <span class="mx-2">•</span>
-                                    <i class="bi bi-calendar"></i> Mar 13, 2024
+                    <?php
+                        include('includes/connection.php');
+                        $query = "SELECT 
+                                    blogs.blog_id,
+                                    blogs.title,
+                                    blogs.intro,
+                                    blogs.sdg_goal,
+                                    blogs.posted_date,
+                                    blogs.cover_image,
+                                    blogs.paragraphs,
+                                    users.full_name
+                                FROM blogs
+                                JOIN users ON blogs.user_id = users.user_id
+                                ORDER BY blogs.posted_date DESC
+                                LIMIT 10;";
+
+                        $conn = connectDatabase();
+                        $result = $conn->query($query);
+                    
+                        if ($result && $result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                $id = $row["blog_id"];
+                                $title = $row["title"];
+                                $sdg = $row["sdg_goal"];
+                                $date = $row["posted_date"];
+                                $user = $row["full_name"];
+                                $intro = $row["intro"];
+                                $cover = $row["cover_image"];
+                                $para = $row["paragraphs"];
+                                
+
+                                echo('
+                                <div class="col-md-6">
+                                    <div class="card blog-card">
+                                        <div class="card-body">
+                                            <span class="category-badge">'.$sdg.'</span>
+                                            <h5 class="blog-title">'.$title.'</h5>
+                                            <div class="meta-info mb-2">
+                                                <i class="bi bi-person"></i> '.$user.'
+                                                <span class="mx-2">•</span>
+                                                <i class="bi bi-calendar"></i> '.$date.'
+                                            </div>
+                                            <p class="card-text">'.$intro.'</p>
+                                            <a href="blog-detail.php?id='.$id.'&title='.$title.'&cover='.$cover.'&sdg='.$sdg.'&intro='.$intro.'&para='.$para.'&user='.$user.'&date='.$date.'" class="btn btn-success">Read More</a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p class="card-text">Discover how SDG 6 is transforming communities through clean water and sanitation projects...</p>
-                                <a href="blog-detail.html" class="btn btn-success">Read More</a>
-                            </div>
-                        </div>
-                    </div>
+                                ');
+                            }
+                        }
+                    
+                        $conn->close();
+                    ?>
+                    
                 </div>
 
                 <div class="container">
                     <!-- Add Blog Button -->
                     <div class="add-blog-btn mb-4 text-start">
-                        <a href="add-blog.html" class="btn btn-success">
+                        <a href="add-blog.php" class="btn btn-success">
                             <i class="bi bi-plus-circle"></i> Add Blog
                         </a>
                     </div>
@@ -107,7 +134,7 @@
                 </div>
                 
 
-                <!-- Pagination -->
+                <!-- Pagination 
                 <nav class="mt-4">
                     <ul class="pagination justify-content-center">
                         <li class="page-item disabled">
@@ -120,7 +147,7 @@
                             <a class="page-link" href="#">Next</a>
                         </li>
                     </ul>
-                </nav>
+                </nav>-->
             </div>
 
             <!-- Sidebar -->

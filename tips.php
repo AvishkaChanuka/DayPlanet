@@ -24,41 +24,53 @@
     <div class="container my-5">
         <!-- Tips Section -->
         <div class="row">
-            <!-- Tip 1 -->
-            <div class="col-md-6">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Use Reusable Bags</h5>
-                        <p class="card-text">Switch to reusable bags for shopping to reduce plastic waste.</p>
-                        <p class="card-text"><small class="text-muted">Posted on: 2024-12-18</small></p>
-                        <button class="btn btn-outline-success btn-sm" disabled>👍 Like</button>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Tip 2 -->
-            <div class="col-md-6">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Save Electricity</h5>
-                        <p class="card-text">Turn off lights and unplug devices when not in use.</p>
-                        <p class="card-text"><small class="text-muted">Posted on: 2024-12-17</small></p>
-                        <button class="btn btn-outline-success btn-sm" disabled>👍 Like</button>
-                    </div>
-                </div>
-            </div>
+        <?php
 
-            <!-- Tip 3 -->
-            <div class="col-md-6">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Start Composting</h5>
-                        <p class="card-text">Compost food scraps and yard waste to enrich soil and reduce landfill waste.</p>
-                        <p class="card-text"><small class="text-muted">Posted on: 2024-12-16</small></p>
-                        <button class="btn btn-outline-success btn-sm" disabled>👍 Like</button>
+        include('includes/connection.php');
+        $query = "SELECT * FROM tips ORDER BY(`posted_date`) DESC LIMIT 10;";
+
+        $conn = connectDatabase();
+        $result = $conn->query($query);
+    
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $id = $row["tip_id"];
+                $title = $row["title"];
+                $body = $row["body"];
+                $sdg = $row["sdg_goal"];
+                $date = $row["posted_date"];
+
+                echo('
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">'.$title.'</h5>
+                            <p class="card-text">'.$body.'</p>
+                            <div class="card-meta">
+                                <span class="badge mt-2">'.$sdg.'</span>
+                                <span class="text-muted">'.$date.'</span>
+                            </div>
+                            <button class="btn btn-outline-success btn-sm" disabled>👍 Like</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+                ');
+            }
+        }
+    
+        $conn->close();
+      ?>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Add Blog Button -->
+        <div class="add-blog-btn mb-4 text-start">
+            <a href="add-tip.php" class="btn btn-success">
+                <i class="bi bi-plus-circle"></i> Add Tip
+             </a>            
         </div>
     </div>
 </body>

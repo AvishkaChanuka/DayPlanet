@@ -6,6 +6,7 @@
     <title>Profile | Day Planet</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <?php include('includes/connection.php');?>
     <style>
       body {
         background-color: #f8f9fa;
@@ -14,6 +15,7 @@
       .profile-header {
         background-color: #ffffff;
         padding: 2rem 0;
+        padding-top:5rem;
         border-bottom: 1px solid #dee2e6;
         margin-bottom: 2rem;
         box-shadow: 0 2px 4px rgba(0,0,0,0.05);
@@ -189,6 +191,8 @@
     </style>
   </head>
   <body>
+    <!-- Navigation -->
+    <?php include('includes/navbar.php');?>
     <!-- Profile Header -->
     <div class="profile-header">
       <div class="container">
@@ -199,20 +203,57 @@
           <div class="col-md-9">
             <div class="d-flex justify-content-between align-items-center mb-3">
               <div>
-                <h2 class="mb-1">Wade Wilson</h2>
-                <p class="text-muted mb-2">@Deadpool</p>
-                <p class="mb-2"><i class="bi bi-geo-alt-fill"></i>Asia</p>
-                <p class="mb-3">"Passionate about sustainable development and making a positive impact 🌱"</p>
-              </div>
-              <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#editProfileModal">
-                <i class="bi bi-pencil-square"></i> Edit Profile
-              </button>
-            </div>
-            <div class="d-flex gap-4">
-              <div><strong>245</strong> <span class="text-muted">Posts</span></div>
-              <div><strong>15</strong> <span class="text-muted">Badges</span></div>
-              <div><strong>1.2k</strong> <span class="text-muted">Followers</span></div>
-            </div>
+              <?php
+                $query = "SELECT 
+                              u.user_id,
+                              u.full_name,
+                              u.email,
+                              u.location,
+                              u.gender,
+                              u.points,
+                              u.profile_pic,
+                              u.date_joined,
+                              COUNT(DISTINCT p.post_id) AS post_count,
+                              COUNT(DISTINCT t.tip_id) AS tip_count,
+                              COUNT(DISTINCT b.blog_id) AS blog_count
+                          FROM users u
+                          LEFT JOIN posts p ON u.user_id = p.user_id
+                          LEFT JOIN tips t ON u.user_id = t.user_id
+                          LEFT JOIN blogs b ON u.user_id = b.user_id
+                          WHERE u.user_id = ".$_COOKIE["UserID"]."
+                          GROUP BY u.user_id;";
+
+                $conn = connectDatabase();
+                $result = $conn->query($query);
+
+                if ($result && $result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        $name = $row["full_name"];
+                        $location = $row["location"];
+                        $cover = $row["profile_pic"];
+                        $sdg = $row["date_joined"];
+
+                        echo'<h2 class="mb-1">'.$name.'</h2>';
+                        echo'<p class="mb-2"><i class="bi bi-geo-alt-fill"></i>'.$location.'</p>';
+
+                        echo'
+                          <p class="mb-3">"Passionate about sustainable development and making a positive impact 🌱"</p>
+                            </div>
+                          </div>
+                          <div class="d-flex gap-4">
+                            <div><strong>'.$row["post_count"].'</strong> <span class="text-muted">Posts</span></div>
+                            <div><strong>'.$row["tip_count"].'</strong> <span class="text-muted">Tips</span></div>
+                            <div><strong>'.$row["blog_count"].'</strong> <span class="text-muted">Blogs</span></div>
+                          </div>
+                        ';
+                    }
+                }
+
+                $conn->close();
+              ?>
+                
+                
+                
           </div>
         </div>
       </div>
@@ -243,29 +284,54 @@
         <!-- Posts tab -->
         <div class="tab-pane fade show active" id="posts" role="tabpanel">
           <div class="row">
-            <div class="col-md-4">
-              <div class="post-card">
-                <img src="assets/solar.jpg" class="card-img-top" alt="Solar Panel Installation">
-                <div class="card-body">
-                  <div class="card-meta">
-                    <span class="badge">SDG 7</span>
-                    <span class="text-muted">3 days ago</span>
-                  </div>
-                  <h5 class="card-title">Solar Panel Installation</h5>
-                  <p class="card-text">Just installed solar panels! #CleanEnergy</p>
-                  <div class="card-actions">
-                    <button class="action-button heart-button">
-                      <i class="bi bi-heart-fill"></i>
-                      <span>24</span>
-                    </button>
-                    <button class="action-button comment-button">
-                      <i class="bi bi-chat-fill"></i>
-                      <span>5</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+          <?php
+
+            
+            $query = "SELECT * FROM posts WHERE user_id = ".$_COOKIE["UserID"]." ORDER BY(`posted_date`) ;";
+
+            $conn = connectDatabase();
+            $result = $conn->query($query);
+
+            if ($result && $result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $id = $row["post_id"];
+                    $title = $row["title"];
+                    $body = $row["body"];
+                    $cover = $row["cover_image"];
+                    $sdg = $row["sdg_goal"];
+                    $date = $row["posted_date"];
+
+                    echo('
+                    <div class="col-md-4">
+                      <div class="post-card">
+                        <img src="upload/post/'.$cover.'" class="card-img-top">
+                        <div class="card-body">
+                          <div class="card-meta">
+                            <span class="badge mt-2">'.$sdg.'</span>
+                            <span class="text-muted">'.$date.'</span>
+                          </div>
+                          <h5 class="card-title fw-bold mb-3">'.$title.'</h5>
+                          <p class="card-text fs-6 text-dark mb-4">'.$body.'</p>
+                          <div class="d-flex gap-3">
+                            <button class="action-button heart-button">
+                              <i class="bi bi-heart-fill"></i>
+                              <span>24</span>
+                            </button>
+                            <button class="action-button comment-button">
+                              <i class="bi bi-chat-fill"></i>
+                              <span>5</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>');
+                }
+            }
+
+            $conn->close();
+          ?>
+
           </div>
         </div>
 

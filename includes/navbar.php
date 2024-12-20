@@ -38,7 +38,7 @@
 
         <li class="nav-item">
           
-          <a class="nav-link" href="#">Leaderboard</a>
+          <a class="nav-link" href="leaderboard.php">Leaderboard</a>
         </li>
 
         <li class="nav-item">
@@ -46,11 +46,11 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#">Blog</a>
+          <a class="nav-link" href="blogs.php">Blog</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#">Profile</a>
+          <a class="nav-link" href="user_profile.php">Profile</a>
         </li>
 
       </ul>
