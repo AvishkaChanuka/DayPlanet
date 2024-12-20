@@ -32,7 +32,7 @@
     <div class="container">
         <h1 class="mb-4 text-center text-success">Write a Blog</h1>
 
-        <form id="addBlogForm" enctype="multipart/form-data" >
+        <form id="addBlogForm" enctype="multipart/form-data" method ="POST">
             <div class="mb-3">
                 <label for="blogTitle" class="form-label">Blog Title</label>
                 <input type="text" class="form-control" id="blogTitle" placeholder="Enter the blog title" required name="BlogTitle">
@@ -72,11 +72,39 @@
                 <label for="blogContent" class="form-label">Content</label>
                 <textarea class="form-control" id="blogContent" rows="10" placeholder="Write your blog here..." required name="BlogContent"></textarea>
             </div>
-            <button type="submit" class="btn btn-success w-100">Submit Blog</button>
+            <button type="submit" class="btn btn-success w-100" name="AddBlog">Submit Blog</button>
         </form>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <?php
+        include('includes/crud.php');
+        
+        if(isset($_POST["AddBlog"])){
+            $user = $_COOKIE["UserID"];
+            $blogTitle = $_POST["BlogTitle"];
+            $blogSDG = $_POST["BlogSDG"];
+            $BlogIntro = $_POST["BlogIntro"];
+            $BlogContent = $_POST["BlogContent"];
+
+            $blogCover = $_FILES["BlogCover"] ["name"];
+            $blogCoverType = $_FILES["BlogCover"] ["type"];
+            $blogCoverTemp = $_FILES["BlogCover"] ["tmp_name"];
+            $blogCoverError = $_FILES["BlogCover"] ["error"];
+
+            $query = "INSERT INTO blogs (user_id, title, Intro, cover_image, sdg_goal, paragraphs)
+                    VALUES ($user, '".$blogTitle."', '".$BlogIntro."', '".$blogCover."', '".$blogSDG."', '".$BlogContent."');";
+          
+            if(Create($query)){
+                move_uploaded_file($blogCoverTemp, "upload/blog/".$blogCover);
+                ShowSuccess("Blog Posted Successfully!!!");
+            }
+            else{
+                ShowError("Something went wrong, please try again!!!");
+            }
+        }
+      ?>
     
 </body>
 </html>
