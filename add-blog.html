@@ -31,15 +31,19 @@
 <body>
     <div class="container">
         <h1 class="mb-4 text-center text-success">Write a Blog</h1>
-        
+
         <form id="addBlogForm" enctype="multipart/form-data" >
             <div class="mb-3">
                 <label for="blogTitle" class="form-label">Blog Title</label>
-                <input type="text" class="form-control" id="blogTitle" placeholder="Enter the blog title" required>
+                <input type="text" class="form-control" id="blogTitle" placeholder="Enter the blog title" required name="BlogTitle">
+            </div>
+            <div class="mb-3">
+                <label for="blogImage" class="form-label">Blog Cover Image</label>
+                <input class="form-control" id="blogImage" type="file" name="BlogCover" required>
             </div>
             <div class="mb-3">
                 <label for="blogCategory" class="form-label">Category</label>
-                <select class="form-select" id="blogCategory" required>
+                <select class="form-select" id="blogCategory" required name="BlogSDG">
                     <option value="">Select a category</option>
                     <option value="SDG 1">SDG 1: No Poverty</option>
                     <option value="SDG 2">SDG 2: Zero Hunger</option>
@@ -61,12 +65,12 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label for="blogContent" class="form-label">Introduction</label>
-                <textarea class="form-control" id="blogContent" rows="5" placeholder="Write your blog here..." required></textarea>
+                <label for="blogIntro" class="form-label">Introduction</label>
+                <textarea class="form-control" id="blogIntro" rows="5" placeholder="Write your Intro here..." required name="BlogIntro"></textarea>
             </div>
             <div class="mb-3">
                 <label for="blogContent" class="form-label">Content</label>
-                <textarea class="form-control" id="blogContent" rows="10" placeholder="Write your blog here..." required></textarea>
+                <textarea class="form-control" id="blogContent" rows="10" placeholder="Write your blog here..." required name="BlogContent"></textarea>
             </div>
             <button type="submit" class="btn btn-success w-100">Submit Blog</button>
         </form>
