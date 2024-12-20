@@ -123,9 +123,9 @@
           $result = $conn->query($query);
 
           if ($result && $result->num_rows > 0) {
-             $i = 1;
+             $i = 0;
               while ($row = $result->fetch_assoc()) {
-
+                  $i++;
                   echo('
                   <tr>
                     <td><span class="rank">'.$i.'</span></td>
